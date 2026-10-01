@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Geist:wght@300..700&family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+:root {
+  --font-fraunces: "Fraunces", Georgia, serif;
+  --font-geist-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-noto-serif-devanagari: "Noto Serif Devanagari", "Fraunces", Georgia, serif;
+  --font-noto-sans-devanagari: "Noto Sans Devanagari", "Geist", sans-serif;
+
+  --bg: #FAF7F2;
+  --surface: #FFFFFF;
+  --surface-2: #F3EEE6;
+  --ink: #14110F;
+  --ink-muted: #6B645C;
+  --ink-faint: #A39B91;
+  --line: #E7E1D8;
+  --accent: #7A1F2B;
+  --accent-hover: #641823;
+  --accent-soft: #F4E6E8;
+  --success: #2F6B4F;
+  --warning: #9A6A12;
+  --danger: #A32626;
+
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  --font-serif: var(--font-fraunces), serif;
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-devanagari-serif: var(--font-noto-serif-devanagari), serif;
+  --font-devanagari-sans: var(--font-noto-sans-devanagari), sans-serif;
+
+  --shadow-drawer: 0 12px 40px -12px rgb(20 17 15 / 0.18);
+  --radius-card: 12px;
+  --radius-control: 8px;
+  --radius-pill: 9999px;
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+/* Dynamic Devanagari Typography */
+[data-lang="mr"] {
+  font-family: var(--font-noto-sans-devanagari), var(--font-geist-sans), sans-serif;
+}
+
+[data-lang="mr"] .font-serif,
+[data-lang="mr"] h1,
+[data-lang="mr"] h2,
+[data-lang="mr"] h3 {
+  font-family: var(--font-noto-serif-devanagari), var(--font-fraunces), serif;
+}
+
+/* Subtle Maharashtrian Heritage Accent */
+.kesari-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: #C85A17;
+}
+
+.heritage-border {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--line) 20%, #C85A17 50%, var(--line) 80%, transparent 100%);
+  opacity: 0.6;
+}
+
+/* Tabular numerals for statistics, age, metrics */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hairline border utility */
+.hairline-b {
+  border-bottom: 1px solid var(--line);
+}
+.hairline-t {
+  border-top: 1px solid var(--line);
+}
+.hairline-r {
+  border-right: 1px solid var(--line);
+}
+.hairline-l {
+  border-left: 1px solid var(--line);
+}
+.hairline {
+  border: 1px solid var(--line);
+}
+
+/* Focus ring accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Primary Button Styling */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--accent);
+  color: #FAF7F2;
+  border-radius: 9999px;
+  height: 48px;
+  padding: 0 28px;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  transition: background-color 200ms var(--ease-editorial), transform 150ms var(--ease-editorial);
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Hero Button Variation */
+.btn-primary-hero {
+  height: 56px;
+  padding: 0 32px;
+  font-size: 1.0625rem;
+}
+
+/* Secondary Button Styling */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 9999px;
+  height: 48px;
+  padding: 0 28px;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: background-color 200ms var(--ease-editorial), border-color 200ms var(--ease-editorial);
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--surface-2);
+}
+
+/* Ghost / Underline Link */
+.link-ghost {
+  position: relative;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.link-ghost::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 250ms var(--ease-editorial);
+}
+.link-ghost:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Destructive Button */
+.btn-destructive {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--surface);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  border-radius: 9999px;
+  height: 40px;
+  padding: 0 20px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-editorial);
+}
+.btn-destructive:hover:not(:disabled) {
+  background-color: #FDEDED;
+}
+
+/* Eyebrow Label */
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
